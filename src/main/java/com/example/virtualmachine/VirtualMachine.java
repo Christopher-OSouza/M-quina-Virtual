@@ -44,8 +44,6 @@ public class VirtualMachine {
                 ).findFirst();
                 if(rotulo.isPresent()) {
                     comando.setInstrucao3(completar8(String.valueOf(rotulo.get().getLinha())));
-                } else {
-                    System.out.println("vruuuuum");
                 }
             }
         });
@@ -80,12 +78,12 @@ public class VirtualMachine {
     public void rodar(){
         int i=0,s=0;
 
-        while(!comandos.get(i).getInstrucao2().contains("HLT")){
-            if(comandos.get(i).getInstrucao2().contains("START")){
+        while(!comandos.get(i).getInstrucao2().trim().equals("HLT")){
+            if(comandos.get(i).getInstrucao2().trim().equals("START")){
                 s=-1;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("DALLOC")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("DALLOC")){
                 int m=Integer.parseInt(comandos.get(i).getInstrucao3().replace(" ",""));
                 int n=Integer.parseInt(comandos.get(i).getInstrucao4().replace(" ",""));
                 for(int k=n-1;k>=0;k--){
@@ -94,7 +92,7 @@ public class VirtualMachine {
                 }
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("ALLOC")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("ALLOC")){
                 int m=Integer.parseInt(comandos.get(i).getInstrucao3().replace(" ",""));
                 int n=Integer.parseInt(comandos.get(i).getInstrucao4().replace(" ",""));
                 for(int k=0;k<=n-1;k++){
@@ -103,71 +101,71 @@ public class VirtualMachine {
                 }
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("STR")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("STR")){
                 int n=Integer.parseInt(comandos.get(i).getInstrucao3().replace(" ",""));
                 stack.set(n,stack.get(s));
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("RD")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("RD")){
                 s++;
                 System.out.println("digite valor:");
                 stack.set(s,sc.nextInt());
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("PRN")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("PRN")){
                 System.out.println(stack.get(s));
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("PRN")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("PRN")){
                 System.out.println(stack.get(s));
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("CALL")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("CALL")){
                 int p=Integer.parseInt(comandos.get(i).getInstrucao3().replace(" ",""));
                 s++;
                 stack.set(s,i);// ou i++???
                 i=p;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("LDC")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("LDC")){
                 int k=Integer.parseInt(comandos.get(i).getInstrucao3().replace(" ",""));
                 s++;
                 stack.set(s,k);
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("LDV")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("LDV")){
                 int n=Integer.parseInt(comandos.get(i).getInstrucao3().replace(" ",""));
                 s++;
                 stack.set(s,stack.get(n));
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("ADD")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("ADD")){
                 stack.set(s-1,stack.get(s-1)+stack.get(s));
                 s--;
 
             }
-            else if(comandos.get(i).getInstrucao2().contains("SUB")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("SUB")){
                 stack.set(s-1,stack.get(s-1)-stack.get(s));
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("MULT")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("MULT")){
                 stack.set(s-1,stack.get(s-1)*stack.get(s));
                 s--;
             }
-            else if(comandos.get(i).getInstrucao2().contains("DIVI")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("DIVI")){
                 stack.set(s-1,stack.get(s-1)/stack.get(s));
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("INV")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("INV")){
                 stack.set(s,-stack.get(s));
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("AND")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("AND")){
                 if(stack.get(s-1)==1 && stack.get(s)==1){
                     stack.set(s-1,1);
                 } else {
@@ -176,7 +174,7 @@ public class VirtualMachine {
                s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("OR")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("OR")){
                 if(stack.get(s-1)==1 || stack.get(s)==1){
                     stack.set(s-1,1);
                 } else {
@@ -185,11 +183,11 @@ public class VirtualMachine {
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("NEG")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("NEG")){
                 stack.set(s,1-stack.get(s));
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("CME")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("CME")){
                 if(stack.get(s-1)< stack.get(s)){
                     stack.set(s-1,1);
                 } else {
@@ -198,7 +196,7 @@ public class VirtualMachine {
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("CMA")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("CMA")){
                 if(stack.get(s-1) > stack.get(s)){
                     stack.set(s-1,1);
                 } else {
@@ -207,7 +205,7 @@ public class VirtualMachine {
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("CEQ")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("CEQ")){
                 if(stack.get(s-1)== stack.get(s)){
                     stack.set(s-1,1);
                 } else {
@@ -216,7 +214,7 @@ public class VirtualMachine {
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("CDIF")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("CDIF")){
                 if(stack.get(s-1)!= stack.get(s)){
                     stack.set(s-1,1);
                 } else {
@@ -225,7 +223,7 @@ public class VirtualMachine {
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("CMEQ")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("CMEQ")){
                 if(stack.get(s-1)<= stack.get(s)){
                     stack.set(s-1,1);
                 } else {
@@ -234,7 +232,7 @@ public class VirtualMachine {
                 s--;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("CMAQ")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("CMAQ")){
                 if(stack.get(s-1)>= stack.get(s)){
                     stack.set(s-1,1);
                 } else {
@@ -244,12 +242,12 @@ public class VirtualMachine {
             }
 
 
-            else if(comandos.get(i).getInstrucao2().contains("JMP")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("JMP")){
                 int p=Integer.parseInt(comandos.get(i).getInstrucao3().replace(" ",""));
                 i=p;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("JPMF")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("JMPF")){
                 int p=Integer.parseInt(comandos.get(i).getInstrucao3().replace(" ",""));
                 if(stack.get(s)==0)
                     i=p;
@@ -259,12 +257,11 @@ public class VirtualMachine {
                 s=s-1;
             }
 
-            else if(comandos.get(i).getInstrucao2().contains("RETURN")){
+            else if(comandos.get(i).getInstrucao2().trim().equals("RETURN")){
                 i=stack.get(s);
                 s--;
             }
             i++;
         }
-        System.out.println("acabou");
     }
 }
