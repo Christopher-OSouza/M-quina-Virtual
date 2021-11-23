@@ -100,7 +100,7 @@ public class HelloApplication extends Application {
 
         //region FILE CHOOSER
         final FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TEXT files (*.obj)", "*.obj");
         fileChooser.getExtensionFilters().add(extFilter);
         //endregion
 
