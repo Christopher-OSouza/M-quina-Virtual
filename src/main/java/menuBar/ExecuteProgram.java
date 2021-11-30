@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2021 created by Computer Engineering students (Cesar Marrote Manzano,
+ * Christopher de Oliveira Souza and Murilo de Paula Araujo) at PUC-Campinas.
+ *
+ * All rights reserved.
+ */
+
+/* Responsável por executar o programa (normal e passo a passo) */
+
 package menuBar;
 
 import com.example.virtualmachine.VirtualMachine;
@@ -52,6 +61,7 @@ public class ExecuteProgram {
 
     public void executeNextStep(VirtualMachine virtualMachine, TableView codeTable) {
         int position = virtualMachine.getPosition();
+        //Foca na posição da tabela, quando o próximo passo é solicitado
         codeTable.requestFocus();
         codeTable.getSelectionModel().select(position);
         codeTable.getFocusModel().focus(position);

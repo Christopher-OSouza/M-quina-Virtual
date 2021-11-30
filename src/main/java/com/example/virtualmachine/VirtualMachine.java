@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2021 created by Computer Engineering students (Cesar Marrote Manzano,
+ * Christopher de Oliveira Souza and Murilo de Paula Araujo) at PUC-Campinas.
+ *
+ * All rights reserved.
+ */
+
+/* Responsável pela execução do programa */
+
 package com.example.virtualmachine;
 
 import codeTableView.Commands;
@@ -68,6 +77,7 @@ public class VirtualMachine {
         stackTable.setItems(FXCollections.observableList(memoryStackList));
     }
 
+    //Ajusta o valor (identificador) do jump, para que as intruções JMP, JMPF e CALL sejam executadas corretamente
     public void adjustJump() {
         commands.forEach(commands -> {
             if (commands.getInstruction2().contains("JMP") || commands.getInstruction2().contains("JMPF") || commands.getInstruction2().contains("CALL")) {
@@ -85,6 +95,7 @@ public class VirtualMachine {
         });
     }
 
+    //Prepara intruções a partir do arquivo lido
     public void prepareInstruction() {
         commands = new ArrayList<>();
         int i = 0;
@@ -103,6 +114,7 @@ public class VirtualMachine {
         commands.forEach(commands -> System.out.println(commands.getInstruction1() + commands.getInstruction2() + commands.getInstruction3() + commands.getInstruction4()));
     }
 
+    // Verifica o comando atual e executa
     public void analiseCommand() {
         switch (commands.get(i).getInstruction2().trim()) {
             case "START" -> s = -1;

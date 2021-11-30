@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2021 created by Computer Engineering students (Cesar Marrote Manzano,
+ * Christopher de Oliveira Souza and Murilo de Paula Araujo) at PUC-Campinas.
+ *
+ * All rights reserved.
+ */
+
+/* Classe para armazenar os valores na stack e poder imprimir na interface */
+
 package stackTableView;
 
 public class MemoryStack {
