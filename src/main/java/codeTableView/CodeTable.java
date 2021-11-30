@@ -5,7 +5,9 @@
  * All rights reserved.
  */
 
-/* Prepara os valores para serem imprimidos na interface */
+/*
+ * Prepara os valores para serem imprimidos na interface na parte do código.
+ */
 
 package codeTableView;
 

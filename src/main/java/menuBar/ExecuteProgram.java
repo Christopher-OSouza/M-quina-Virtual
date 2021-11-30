@@ -5,7 +5,9 @@
  * All rights reserved.
  */
 
-/* Responsável por executar o programa (normal e passo a passo) */
+/*
+ * Responsável por executar o programa (normal e passo a passo)
+ */
 
 package menuBar;
 

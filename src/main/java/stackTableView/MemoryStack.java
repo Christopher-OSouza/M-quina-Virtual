@@ -5,7 +5,9 @@
  * All rights reserved.
  */
 
-/* Classe para armazenar os valores na stack e poder imprimir na interface */
+/*
+ * Classe para armazenar os valores na stack e poder imprimir na interface.
+ */
 
 package stackTableView;
 

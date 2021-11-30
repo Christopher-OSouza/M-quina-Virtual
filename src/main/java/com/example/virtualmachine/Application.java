@@ -5,6 +5,10 @@
  * All rights reserved.
  */
 
+/*
+ * Realiza a construção da interface e realiza a interação com toda a lógica de programação da máquina virtual.
+ */
+
 package com.example.virtualmachine;
 
 import codeTableView.CodeTable;

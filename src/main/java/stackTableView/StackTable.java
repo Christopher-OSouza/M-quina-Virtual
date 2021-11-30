@@ -5,7 +5,9 @@
  * All rights reserved.
  */
 
-/* Pega a tabela da interface e adiciona os valores corretos para serem mostrados na tela */
+/*
+ * Pega a tabela da interface e insere os valores corretos para serem mostrados na tela.
+ */
 
 package stackTableView;
 
@@ -17,11 +19,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class StackTable {
 
-    private final static String STACK_TABLE_ID = "#stack";
-    final TableView<MemoryStack> stackTableView;
-    final ObservableList<TableColumn<MemoryStack, ?>> stackTableColumns;
-    final TableColumn<MemoryStack, String> addressColumn;
-    final TableColumn<MemoryStack, String> valueColumn;
+    private final String STACK_TABLE_ID = "#stack";
+    private final TableView<MemoryStack> stackTableView;
+    private final ObservableList<TableColumn<MemoryStack, ?>> stackTableColumns;
+    private final TableColumn<MemoryStack, String> addressColumn;
+    private final TableColumn<MemoryStack, String> valueColumn;
 
     public StackTable(Scene scene) {
         stackTableView = (TableView<MemoryStack>) scene.lookup(STACK_TABLE_ID);

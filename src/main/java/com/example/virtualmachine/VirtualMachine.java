@@ -5,7 +5,9 @@
  * All rights reserved.
  */
 
-/* Responsável pela execução do programa */
+/*
+ * Responsável pela execução do programa, contém toda a lógica de programação da máquina virtual e tratamento das instruções
+ */
 
 package com.example.virtualmachine;
 

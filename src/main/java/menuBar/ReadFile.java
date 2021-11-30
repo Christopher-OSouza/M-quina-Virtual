@@ -5,7 +5,9 @@
  * All rights reserved.
  */
 
-/* Responsável por ler o arquivo .obj que foi gerado pelo compilador */
+/*
+ * Responsável por ler o arquivo ".obj" que foi gerado pelo compilador
+ */
 
 package menuBar;
 
