@@ -5,10 +5,9 @@
  * All rights reserved.
  */
 
-/*
+/**
  * Responsável pela execução do programa, contém toda a lógica de programação da máquina virtual e tratamento das instruções
  */
-
 package com.example.virtualmachine;
 
 import codeTableView.Commands;
@@ -40,6 +39,11 @@ public class VirtualMachine {
         prepareInstruction();
     }
 
+    /**
+     * Construtor da classe para instanciar as variáveis utilizadas na execução da máquina virtual.
+     *
+     * @param objects contém um "TextInputDialog", "TextArea", "Alert", "Button" e uma TableView.
+     */
     public VirtualMachine(List<Object> objects) {
         this.textInputDialog = (TextInputDialog) objects.get(0);
         this.resultTextArea = (TextArea) objects.get(1);
@@ -52,6 +56,9 @@ public class VirtualMachine {
         }
     }
 
+    /**
+     * "Reseta" as principais vaiáveis e a pilha e prepara o programa para uma nova execução na máquina virtual.
+     */
     public void cleanDate() {
         i = 0;
         s = 0;
@@ -67,10 +74,16 @@ public class VirtualMachine {
         return i;
     }
 
+    /**
+     * @return a lista de comandos.
+     */
     public List<Commands> getCommands() {
         return commands;
     }
 
+    /**
+     * Atualiza a pilha na tela.
+     */
     public void updateStackOnTheScreen() {
         List<MemoryStack> memoryStackList = new ArrayList<>();
         for (int i = 0; i <= s; i++) {
@@ -79,7 +92,9 @@ public class VirtualMachine {
         stackTable.setItems(FXCollections.observableList(memoryStackList));
     }
 
-    //Ajusta o valor (identificador) do jump, para que as intruções JMP, JMPF e CALL sejam executadas corretamente
+    /**
+     * Ajusta o valor (identificador) do jump, para que as intruções "JMP", "JMPF" e "CALL" sejam executadas corretamente.
+     */
     public void adjustJump() {
         commands.forEach(commands -> {
             if (commands.getInstruction2().contains("JMP") || commands.getInstruction2().contains("JMPF") || commands.getInstruction2().contains("CALL")) {
@@ -97,7 +112,10 @@ public class VirtualMachine {
         });
     }
 
-    //Prepara intruções a partir do arquivo lido
+    /**
+     * Prepara as intruções a partir do arquivo lido, considerando 32 caracteres por linha no arquivo, salvando respectivamente
+     * de 8 em 8 para cada instrução, percorrendo o arquivo inteiro linha por linha.
+     */
     public void prepareInstruction() {
         commands = new ArrayList<>();
         int i = 0;
@@ -116,7 +134,9 @@ public class VirtualMachine {
         commands.forEach(commands -> System.out.println(commands.getInstruction1() + commands.getInstruction2() + commands.getInstruction3() + commands.getInstruction4()));
     }
 
-    // Verifica o comando atual e executa
+    /**
+     * Verifica qual é o comando ou a intrusão atual que está sendo analisado no arquivo, e executa esse comando.
+     */
     public void analiseCommand() {
         switch (commands.get(i).getInstruction2().trim()) {
             case "START" -> s = -1;
@@ -273,6 +293,10 @@ public class VirtualMachine {
         i++;
     }
 
+    /**
+     * Método responsável por executar todas as instruções da máquina virtual até encontrar a intrução "HLT" para encerrar
+     * a execução do programa.
+     */
     public void run() {
         while (!commands.get(i).getInstruction2().trim().equals("HLT")) {
             analiseCommand();

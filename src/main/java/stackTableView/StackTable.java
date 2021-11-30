@@ -5,10 +5,9 @@
  * All rights reserved.
  */
 
-/*
+/**
  * Pega a tabela da interface e insere os valores corretos para serem mostrados na tela.
  */
-
 package stackTableView;
 
 import javafx.collections.ObservableList;
@@ -25,6 +24,13 @@ public class StackTable {
     private final TableColumn<MemoryStack, String> addressColumn;
     private final TableColumn<MemoryStack, String> valueColumn;
 
+    /**
+     * Construtor que realiza a interação de uma tabela por código de programação com a tabela criada na ‘interface’ gráfica,
+     * que mostrará a pilha que a máquina virtual está armazenando conforme realiza as instruções que está sendo
+     * analisada no arquivo de entrada.
+     *
+     * @param scene é a tela que contém a interface gráfica da máquina virtual.
+     */
     public StackTable(Scene scene) {
         stackTableView = (TableView<MemoryStack>) scene.lookup(STACK_TABLE_ID);
         stackTableColumns = stackTableView.getColumns();
@@ -34,6 +40,9 @@ public class StackTable {
         valueColumn.setCellValueFactory(new PropertyValueFactory<MemoryStack, String>("value"));
     }
 
+    /**
+     * @return a tabela que mostrará a pilha que a máquina virtual está armazenando conforme realiza as instruções.
+     */
     public TableView<MemoryStack> getStackTableView() {
         return stackTableView;
     }

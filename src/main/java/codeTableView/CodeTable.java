@@ -5,10 +5,9 @@
  * All rights reserved.
  */
 
-/*
+/**
  * Prepara os valores para serem imprimidos na interface na parte do código.
  */
-
 package codeTableView;
 
 import javafx.collections.ObservableList;
@@ -21,7 +20,12 @@ public class CodeTable {
     private final static String CODE_TABLE_ID = "#tableCode";
     private final TableView<Commands> codeTableView;
 
-
+    /**
+     * Construtor que realiza a interação de uma tabela por código de programação com a tabela criada na ‘interface’ gráfica,
+     * que mostrará o código inserido pelo usuário no arquivo gerado pelo compilador do tipo ".obj".
+     *
+     * @param scene é a tela que contém a interface gráfica da máquina virtual.
+     */
     public CodeTable(Scene scene) {
         codeTableView = (TableView<Commands>) scene.lookup(CODE_TABLE_ID);
         ObservableList<TableColumn<Commands, ?>> tableColumns = codeTableView.getColumns();
@@ -37,6 +41,9 @@ public class CodeTable {
         secondValueColumn.setCellValueFactory(new PropertyValueFactory<>("instruction4"));
     }
 
+    /**
+     * @return a tabela que mostrará o código inserido pelo usuário no arquivo gerado pelo compilador do tipo ".obj".
+     */
     public TableView<Commands> getCodeTableView() {
         return codeTableView;
     }

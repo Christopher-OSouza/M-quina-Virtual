@@ -5,10 +5,9 @@
  * All rights reserved.
  */
 
-/*
+/**
  * Classe modelo para armazenar um comando (instrução), com seus respectivos valores.
  */
-
 package codeTableView;
 
 public class Commands {
