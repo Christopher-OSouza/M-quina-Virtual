@@ -33,6 +33,11 @@ public class VirtualMachine {
     private final TableView<MemoryStack> stackTable;
     int i = 0, s = 0;
 
+    /**
+     * Método responsável por ler o arquivo e adicionar as instruções em uma lista
+     *
+     * @throws IOException
+     */
     public void prepareFile(String path) throws IOException {
         char[] file = Files.readString(Paths.get(path)).toCharArray();
         charSequence = new StringBuilder(String.valueOf(file).replaceAll("\\r\\n", ""));
@@ -70,6 +75,9 @@ public class VirtualMachine {
         }
     }
 
+    /**
+     * @return a posição da instrução atual, para ser utilizada na tabela da interface.
+     */
     public Integer getPosition() {
         return i;
     }
